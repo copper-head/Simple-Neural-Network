@@ -1,16 +1,32 @@
-#include "matrix.h"
-#include "layervector.h"
+#include "neuralnet.h"
+#include "testdata.h"
 #include <iostream>
+#include <stdlib.h>
 
 int main() {
 
-    Matrix myMatrix(32, 3001, 1);
+    srand(123);
 
-    LayerVector inputLayer(3000, 1);
-    LayerVector nextLayer(32, 0);
+    int layerSizes[] = {8, 6, 4, 2};
 
-    nextLayer.computeValues(myMatrix, inputLayer);
+    NeuralNet testNetwork(layerSizes, 4);
+    testNetwork.randomizeWeights();
 
-    std::cout << nextLayer.getValue(0);
+    const int dataSize = 1000;
+    float inputData[dataSize][8];
+    float outputData[dataSize][2];
+
+    generateData(inputData, outputData, dataSize);
+
+    testNetwork.printWeightChange();
+    testNetwork.setTrainingMode(true);
+
+    for (int i = 0; i < dataSize; i ++)
+        testNetwork.trainExample(inputData[i], outputData[i]);
+
+    testNetwork.averageOutWeightChanges();
+    
+    testNetwork.printWeightChange();
+    std::cout << std::endl << testNetwork.currentTrainingExampleCount;
 
 }

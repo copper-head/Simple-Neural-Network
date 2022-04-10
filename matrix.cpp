@@ -1,6 +1,6 @@
 #include "matrix.h"
 
-Matrix::Matrix(const int num_rows, const int num_columns, const int default_value) {
+Matrix::Matrix(const int num_rows, const int num_columns, const float default_value) {
 
     this->NUM_ROWS = num_rows;
     this->NUM_COLS = num_columns;
@@ -29,4 +29,8 @@ int Matrix::numCols() const {
 
 int Matrix::numRows() const {
     return this->NUM_ROWS;
+}
+
+void Matrix::addToValue(const int row, const int col, const float value) {
+    this->matrix[row][col] += value;
 }

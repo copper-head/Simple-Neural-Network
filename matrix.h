@@ -18,11 +18,12 @@ class Matrix {
 
 
         // ------ CONSTRUCTOR ----- //
-        Matrix(const int num_rows, const int num_columns, const int default_value);
+        Matrix(const int num_rows, const int num_columns, const float default_value);
 
         // ------ PUBLIC METHODS ------ //
         float getValue(const int row, const int col);
         void setValue(const int row, const int col, const float value);
+        void addToValue(const int row, const int col, const float value);
 
         int numCols() const;
         int numRows() const;

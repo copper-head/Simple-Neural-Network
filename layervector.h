@@ -11,7 +11,6 @@ class LayerVector {
     public:
 
         // PUBLIC ATTRIBUTES //
-        int length;
 
 
         LayerVector(const int size, const float defaultValue);
@@ -29,6 +28,11 @@ class LayerVector {
         //
         //
         //
+        void addToValue(const int index, const float value);
+
+        //
+        //
+        //
         void clear();
 
         //
@@ -37,9 +41,15 @@ class LayerVector {
         void computeValues(Matrix &weights, LayerVector &prevLayer);
 
 
-    private:
+        void computeDeltaValues(Matrix &weights, LayerVector &prevLayer);
+
+        int length() const;
 
         std::vector<float> layerVector;
+
+    private:
+
+        int vectorLength;
 
 };
 
