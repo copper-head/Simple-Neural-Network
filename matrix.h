@@ -28,6 +28,7 @@ class Matrix {
         int numCols() const;
         int numRows() const;
 
+        
     private:
         
         // ------ PRIVATE ATTRIBUTES ------ //
